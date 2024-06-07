@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import StyledComponentsRegistry from './registry';
 import './_styles/reset.css';
 import './_styles/global.css';
+import { WindowSizeProvider } from './_context/WindowSizeContext';
 
 export const metadata: Metadata = {
   title: '토스채용',
@@ -17,10 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-      </body>
-    </html>
+    <WindowSizeProvider>
+      <html lang="en">
+        <body>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </body>
+      </html>
+    </WindowSizeProvider>
   );
 }
