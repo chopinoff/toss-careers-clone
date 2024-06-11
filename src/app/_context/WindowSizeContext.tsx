@@ -7,7 +7,7 @@ type Device = 'desktop' | 'mobile';
 interface WindowSize {
   width: number;
   height: number;
-  device: Device;
+  device: Device | undefined;
 }
 
 const WindowSizeContext = createContext<WindowSize | undefined>(undefined);
@@ -21,7 +21,7 @@ export const useWindowSize = (): WindowSize => {
 };
 
 const getDeviceType = (width: number): Device => {
-  if (width < 6640) return 'mobile';
+  if (width < 640) return 'mobile';
   return 'desktop';
 };
 
@@ -30,7 +30,8 @@ export const WindowSizeProvider = ({ children }: { children: ReactNode }) => {
   const [windowSize, setWindowSize] = useState<WindowSize>({
     width: 0,
     height: 0,
-    device: 'desktop',
+    // 최초 렌더링 시 desktop ui가 일시적으로 뜨는 이슈를 해결하기 위해 초기값을 undefined로 설정
+    device: undefined,
   });
 
   useEffect(() => {

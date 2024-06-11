@@ -1,3 +1,9 @@
+'use client';
+
+import { styled } from 'styled-components';
+
 export default function Home() {
-  return <main></main>;
+  return <Main></Main>;
 }
+
+const Main = styled.main``;
