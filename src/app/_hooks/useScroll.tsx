@@ -6,10 +6,18 @@ export function useScroll() {
 
   useEffect(() => {
     let mounted = true;
+    let ticking = false;
+
     const handleScroll = () => {
-      if (mounted) {
-        setScrollY(window.scrollY);
-        setLoading(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (mounted) {
+            setScrollY(window.scrollY);
+            setLoading(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -23,5 +31,6 @@ export function useScroll() {
 
   return {
     scrollY,
+    loading,
   };
 }
