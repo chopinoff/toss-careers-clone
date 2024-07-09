@@ -46,7 +46,7 @@ export default function ScrollSection() {
 
 const Section = styled.section<{ $scrollY: number; $device?: Device }>`
   width: 100vw;
-  height: 3500px;
+  height: 3000px;
   opacity: ${(props) => (props.$scrollY < 1400 ? 1 : props.$scrollY < 2500 ? (2500 - props.$scrollY) / 1100 : 0)};
   pointer-events: none;
   & > div:nth-of-type(1) {
@@ -88,6 +88,10 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
       font-size: ${(props) => (props.$device === 'desktop' ? '24px' : '15px')};
       line-height: ${(props) => (props.$device === 'desktop' ? '34px' : '24px')};
       opacity: ${(props) => (props.$scrollY < 600 ? 0 : props.$scrollY < 830 ? (props.$scrollY - 600) / 230 : 1)};
+      transform: translateY(
+        ${(props) =>
+          (props.$scrollY < 600 ? 20 : props.$scrollY < 830 ? ((830 - props.$scrollY) * 20) / 230 : 0) + 'px'}
+      );
     }
     & > p:nth-of-type(3) {
       top: ${(props) => (props.$device === 'desktop' ? 'calc(136px + 24vh)' : '216px')};
@@ -95,6 +99,10 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
       font-size: ${(props) => (props.$device === 'desktop' ? '24px' : '15px')};
       line-height: ${(props) => (props.$device === 'desktop' ? '34px' : '24px')};
       opacity: ${(props) => (props.$scrollY < 870 ? 0 : props.$scrollY < 1100 ? (props.$scrollY - 870) / 230 : 1)};
+      transform: translateY(
+        ${(props) =>
+          (props.$scrollY < 870 ? 20 : props.$scrollY < 1100 ? ((1100 - props.$scrollY) * 20) / 230 : 0) + 'px'}
+      );
     }
     & > p:nth-of-type(4) {
       top: ${(props) => (props.$device === 'desktop' ? 'calc(238px + 24vh)' : '288px')};
@@ -102,6 +110,10 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
       font-size: ${(props) => (props.$device === 'desktop' ? '24px' : '15px')};
       line-height: ${(props) => (props.$device === 'desktop' ? '34px' : '24px')};
       opacity: ${(props) => (props.$scrollY < 1140 ? 0 : props.$scrollY < 1370 ? (props.$scrollY - 1140) / 230 : 1)};
+      transform: translateY(
+        ${(props) =>
+          (props.$scrollY < 1140 ? 20 : props.$scrollY < 1370 ? ((1370 - props.$scrollY) * 20) / 230 : 0) + 'px'}
+      );
     }
   }
 `;
