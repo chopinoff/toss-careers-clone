@@ -3,11 +3,10 @@
 import { styled } from 'styled-components';
 import NavigationLogo from './NavigationLogo';
 import NavigationContent from './NavigationContent';
-import { useContext, useEffect } from 'react';
-import { useNavbarStore } from '@/app/_store/navbarState';
+import { useEffect } from 'react';
+import { useNavbarStore } from '@/app/_store/navbarStore';
 
 export default function NavgationBar() {
-  // const { navbarColor, setNavbarColor } = useContext(NavbarColorContext);
   const navbarColor = useNavbarStore((state) => state.navbarColor);
   const isMenuOpen = useNavbarStore((state) => state.isMenuOpen);
   const isSubMenuOpen = useNavbarStore((state) => state.isSubMenuOpen);

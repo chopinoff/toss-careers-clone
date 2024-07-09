@@ -4,7 +4,6 @@ import './_styles/reset.css';
 import './_styles/global.css';
 import { WindowSizeProvider } from './_context/WindowSizeContext';
 import NavgationBar from './_components/NavigationBar/NavigationBar';
-import { NavbarColorProvider } from './_context/NavbarColorContext';
 
 export const metadata: Metadata = {
   title: '토스채용',

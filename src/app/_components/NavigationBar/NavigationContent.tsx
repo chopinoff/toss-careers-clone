@@ -2,43 +2,40 @@
 
 import Link from 'next/link';
 import { useWindowSize } from '@/app/_context/WindowSizeContext';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { styled } from 'styled-components';
-import NavbarColorContext from '@/app/_context/NavbarColorContext';
-import { useNavbarStore } from '@/app/_store/navbarState';
+import { useNavbarStore } from '@/app/_store/navbarStore';
 
 export default function NavigationContent() {
   const { device } = useWindowSize();
   const Menu = device === 'mobile' ? MobileMenu : DesktopMenu;
   const SubMenu = device === 'mobile' ? MobileSubMenu : DesktopSubMenu;
-  // const [isMenuOpen, handleIsMenuOpen] = useState(false);
-  // const [isSubMenuOpen, handleIsSubMenuOpen] = useState(false);
   const isMenuOpen = useNavbarStore((store) => store.isMenuOpen);
-  const handleIsMenuOpen = useNavbarStore((store) => store.handleIsMenuOpen);
+  const setIsMenuOpen = useNavbarStore((store) => store.setIsMenuOpen);
   const isSubMenuOpen = useNavbarStore((store) => store.isSubMenuOpen);
-  const handleIsSubMenuOpen = useNavbarStore((store) => store.handleIsSubMenuOpen);
+  const setIsSubMenuOpen = useNavbarStore((store) => store.setIsSubMenuOpen);
 
   function handleMenu(e: React.MouseEvent<HTMLElement, MouseEvent>) {
-    handleIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   }
 
   function handleSubMenu(e: React.MouseEvent<HTMLElement, MouseEvent>) {
     if (device === 'desktop') {
       if (e.type === 'mouseover') {
-        handleIsSubMenuOpen(true);
+        setIsSubMenuOpen(true);
       } else if (e.type === 'mouseout') {
-        handleIsSubMenuOpen(false);
+        setIsSubMenuOpen(false);
       }
     } else {
       if (e.type === 'click') {
-        handleIsSubMenuOpen(!isSubMenuOpen);
+        setIsSubMenuOpen(!isSubMenuOpen);
       }
     }
   }
 
   useEffect(() => {
-    handleIsMenuOpen(false);
-    handleIsSubMenuOpen(false);
+    setIsMenuOpen(false);
+    setIsSubMenuOpen(false);
   }, [device]);
 
   useEffect(() => {
