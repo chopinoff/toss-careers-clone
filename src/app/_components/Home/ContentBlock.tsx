@@ -35,6 +35,9 @@ const BlockWrapper = styled.div<{ $device?: Device; $index: string }>`
   position: relative;
   border-radius: 12px;
   overflow: hidden;
+  width: ${({ $device }) => ($device === 'desktop' ? '466px' : '100%')};
+  aspect-ratio: 5 / 4;
+  margin: ${({ $device }) => ($device === 'desktop' ? '14px 0px' : '10px 0px')};
   & > div:nth-of-type(1) {
     position: absolute;
     top: 0px;
@@ -71,6 +74,7 @@ const BlockWrapper = styled.div<{ $device?: Device; $index: string }>`
       color: var(--grey800);
       font-weight: bold;
       font-size: ${({ $device }) => ($device === 'desktop' ? '32px' : '21px')};
+      line-height: ${({ $device }) => ($device === 'desktop' ? '38px' : '25px')};
       transition: all 0.3s;
     }
     & > p:nth-of-type(3) {
@@ -93,6 +97,7 @@ const BlockWrapper = styled.div<{ $device?: Device; $index: string }>`
       }
       & > p:nth-of-type(2) {
         font-size: 25px;
+        line-height: 32px;
       }
       & > p:nth-of-type(3) {
         opacity: 1;

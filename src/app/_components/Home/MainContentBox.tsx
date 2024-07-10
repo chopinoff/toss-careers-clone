@@ -47,9 +47,15 @@ const Inner = styled.div<{ $device?: Device }>`
 `;
 
 const BlocksWrapper = styled.div`
-  display: grid;
+  /* display: grid;
   column-gap: 30px;
   row-gap: 30px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 370px 370px;
+  grid-template-rows: 370px 370px; */
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0px auto;
 `;
