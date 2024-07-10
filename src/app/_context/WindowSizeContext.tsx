@@ -1,14 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-type Device = 'desktop' | 'mobile';
-
-interface WindowSize {
-  width: number;
-  height: number;
-  device: Device | undefined;
-}
+import { Device, WindowSize } from '../_types/windowSize.types';
 
 const WindowSizeContext = createContext<WindowSize | undefined>(undefined);
 
