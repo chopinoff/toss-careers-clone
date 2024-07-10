@@ -1,21 +1,72 @@
 'use client';
 
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { useScroll } from '@/app/_hooks/useScroll';
 import { useWindowSize } from '@/app/_context/WindowSizeContext';
-
-type Device = 'desktop' | 'mobile';
+import { useEffect, useRef } from 'react';
+import { useNavbarStore } from '@/app/_store/navbarStore';
+import { Device } from '@/app/_types/windowSize.types';
 
 export default function ScrollSection() {
   const { scrollY } = useScroll();
   const { device } = useWindowSize();
+  const backgroundRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLParagraphElement | null>(null);
+  const setNavbarColor = useNavbarStore((store) => store.setNavbarColor);
+
+  useEffect(() => {
+    if (backgroundRef.current) {
+      const opacity = scrollY < 600 ? 0.4 : scrollY < 1300 ? scrollY / 1400 - 1 / 35 : 0.9;
+      backgroundRef.current.style.opacity = String(opacity);
+    }
+    if (titleRef.current) {
+      const opacity = scrollY > 240 ? 0 : (240 - scrollY) / 240;
+      titleRef.current.style.opacity = String(opacity);
+    }
+    if (scrollY > 2500) {
+      setNavbarColor('var(--grey900)');
+    } else {
+      setNavbarColor('#00000000');
+    }
+  }, [scrollY]);
+
+  useEffect(() => {
+    if (backgroundRef.current) {
+      requestAnimationFrame(() => {
+        const animation = backgroundRef.current!.animate([{ opacity: 0 }, { opacity: 0.4 }], {
+          duration: 500,
+        });
+        animation.onfinish = () => {
+          backgroundRef.current!.style.opacity = '0.4';
+        };
+      });
+    }
+    if (titleRef.current) {
+      requestAnimationFrame(() => {
+        const animation = titleRef.current!.animate(
+          [
+            { opacity: 0, transform: 'translateY(40px)' },
+            { opacity: 1, transform: 'translateY(0px)' },
+          ],
+          {
+            duration: 500,
+            delay: 500,
+          },
+        );
+        animation.onfinish = () => {
+          titleRef.current!.style.opacity = '1';
+          titleRef.current!.style.transform = 'translateY(0px)';
+        };
+      });
+    }
+  }, [device]);
 
   return (
     <Section $scrollY={scrollY} $device={device}>
       <div></div>
-      <div></div>
+      <div ref={device && backgroundRef}></div>
       <div>
-        <p>
+        <p ref={device && titleRef}>
           당신도 깊게 몰입했던
           <br />
           무언가가 있나요?
@@ -57,13 +108,14 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
     background-size: cover;
     background-position: center center;
     transform: scale(${(props) => (props.$scrollY < 1600 ? 1 + ((props.$scrollY / 1600) * 3) / 4 : 1.75)});
+    transition: all 0.3s;
   }
   & > div:nth-of-type(2) {
     position: fixed;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
-    opacity: ${(props) => (props.$scrollY < 600 ? 0.4 : props.$scrollY < 1300 ? props.$scrollY / 1400 - 1 / 35 : 0.9)};
+    opacity: 0;
   }
   & > div:nth-of-type(3) {
     position: fixed;
@@ -75,13 +127,15 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
       text-align: center;
       color: var(--white);
     }
+
     & > p:nth-of-type(1) {
       top: ${(props) => (props.$device === 'desktop' ? '22vh' : '120px')};
       font-size: ${(props) => (props.$device === 'desktop' ? '70px' : '32px')};
       font-weight: bold;
       line-height: ${(props) => (props.$device === 'desktop' ? '90px' : '47px')};
-      opacity: ${(props) => (props.$scrollY > 250 ? 0 : (240 - props.$scrollY) / 240)};
+      opacity: 0;
     }
+
     & > p:nth-of-type(2) {
       top: ${(props) => (props.$device === 'desktop' ? '24vh' : '120px')};
       font-weight: bold;
