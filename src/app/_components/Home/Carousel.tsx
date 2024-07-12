@@ -97,6 +97,7 @@ export default function Carousel({ carousel, boxIndex }: { carousel: CarouselDet
 const CarouselWrapper = styled.div<{ $device?: Device; $index: number; $length: number }>`
   position: relative;
   width: 100%;
+  min-width: 1020px;
   overflow: hidden;
   background-color: var(--grey100);
   cursor: grab;

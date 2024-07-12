@@ -24,6 +24,7 @@ export default function MainContentBox({ title, content, blocks, carousel, boxIn
           ))}
         </BlocksWrapper>
       </Inner>
+      <Margin height={56} />
       <Carousel carousel={carousel} boxIndex={boxIndex} />
     </ContentWrapper>
   );
