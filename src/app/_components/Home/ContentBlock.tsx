@@ -102,7 +102,7 @@ const BlockWrapper = styled.div<{ $device?: Device; $index: string }>`
         width: 24px;
         height: 0px;
         overflow: hidden;
-        transition: all 0.3s;
+        ${({ $device }) => $device === 'desktop' && 'transition: all 0.3s;'}
       }
       & > span:nth-of-type(2) {
         display: block;
@@ -110,27 +110,27 @@ const BlockWrapper = styled.div<{ $device?: Device; $index: string }>`
         width: 24px;
         height: 24px;
         overflow: hidden;
-        transition: all 0.3s;
+        ${({ $device }) => $device === 'desktop' && 'transition: all 0.3s;'}
       }
       & > p:nth-of-type(1) {
         display: none;
         color: #0019364f;
         font-size: 15px;
         opacity: 0;
-        transition: all 0.3s;
+        ${({ $device }) => $device === 'desktop' && 'transition: all 0.3s;'}
       }
       & > p:nth-of-type(2) {
         color: var(--grey800);
         font-weight: bold;
         font-size: ${({ $device }) => ($device === 'desktop' ? '32px' : '21px')};
         line-height: ${({ $device }) => ($device === 'desktop' ? '38px' : '26px')};
-        transition: all 0.3s;
+        ${({ $device }) => $device === 'desktop' && 'transition: all 0.3s;'}
       }
       & > p:nth-of-type(3) {
         color: var(--grey800);
         font-size: 14px;
         opacity: 0;
-        transition: all 0.3s;
+        ${({ $device }) => $device === 'desktop' && 'transition: all 0.3s;'}
       }
     }
   }
