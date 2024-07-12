@@ -91,6 +91,9 @@ export default function ScrollSection() {
           새로운 역사를 만들고 있습니다.
         </p>
       </div>
+      <div>
+        <img alt="장식용 이미지" src="https://static.toss.im/web-general/homepage/static/images/down-arrow.png" />
+      </div>
     </Section>
   );
 }
@@ -106,7 +109,7 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
     height: 100vh;
     background-image: url('/images/home-background.jpg');
     background-size: cover;
-    background-position: center center;
+    background-position: ${({ $device }) => ($device === 'desktop' ? '50% 50%' : '25% 50%')};
     transform: scale(${(props) => (props.$scrollY < 1600 ? 1 + ((props.$scrollY / 1600) * 3) / 4 : 1.75)});
     transition: all 0.3s;
   }
@@ -168,6 +171,32 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
         ${(props) =>
           (props.$scrollY < 1140 ? 20 : props.$scrollY < 1370 ? ((1370 - props.$scrollY) * 20) / 230 : 0) + 'px'}
       );
+    }
+  }
+  @keyframes arrow-animation {
+    0% {
+      opacity: 0.8;
+      transform: translateY(0px);
+    }
+    50% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 0.8;
+      transform: translateY(0px);
+    }
+  }
+  & > div:nth-of-type(4) {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: inherit;
+    & > img {
+      width: ${({ $device }) => ($device === 'desktop' ? '36px' : '28px')};
+      height: auto;
+      animation: 2s ease 0s infinite normal none running arrow-animation;
     }
   }
 `;
