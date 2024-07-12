@@ -135,21 +135,20 @@ const BlockWrapper = styled.div<{ $device?: Device; $index: string }>`
     }
   }
   &.focused {
-    position: fixed;
-    z-index: 30;
+    position: ${({ $device }) => ($device === 'desktop' ? 'relative' : 'fixed')};
+    z-index: ${({ $device }) => ($device === 'desktop' ? 0 : 30)};
     top: 0;
     left: 0;
     height: 100%;
-    border-radius: 0px;
+    border-radius: ${({ $device }) => ($device === 'desktop' ? '12px' : '0px')};
     margin: ${({ $device }) => $device === 'mobile' && '0px'};
     & > div {
-      position: absolute;
-      top: 0;
-      left: 0;
       & > div:nth-of-type(1) {
       }
       & > div:nth-of-type(2) {
         backdrop-filter: blur(10px);
+        width: 100%;
+        height: 100%;
         & > span:nth-of-type(1) {
           ${({ $device }) => $device === 'mobile' && 'height: 24px; opacity: 1; padding-bottom: 50px;'}
         }
