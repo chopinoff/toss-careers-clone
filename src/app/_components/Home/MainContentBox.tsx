@@ -6,10 +6,10 @@ import Margin from '../Margin';
 import ContentBlock from './ContentBlock';
 import { Device } from '@/app/_types/windowSize.types';
 import { Detail } from '@/app/_types/contentSection.types';
+import Carousel from './Carousel';
 
-export default function MainContentBox({ title, content, blocks, index }: Detail & { index: number }) {
+export default function MainContentBox({ title, content, blocks, carousel, boxIndex }: Detail & { boxIndex: number }) {
   const { device } = useWindowSize();
-  const boxIndex = index;
   return (
     <ContentWrapper>
       <Margin height={100} />
@@ -24,6 +24,7 @@ export default function MainContentBox({ title, content, blocks, index }: Detail
           ))}
         </BlocksWrapper>
       </Inner>
+      <Carousel carousel={carousel} boxIndex={boxIndex} />
     </ContentWrapper>
   );
 }
@@ -47,11 +48,6 @@ const Inner = styled.div<{ $device?: Device }>`
 `;
 
 const BlocksWrapper = styled.div`
-  /* display: grid;
-  column-gap: 30px;
-  row-gap: 30px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 370px 370px; */
   display: flex;
   flex-wrap: wrap;
   -webkit-box-pack: justify;

@@ -367,6 +367,13 @@ body {
   word-wrap: break-word;
 }
 
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 h1 {
   font-size: var(--font-size-h1);
 }
