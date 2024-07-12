@@ -34,7 +34,7 @@ const ContentWrapper = styled.div``;
 
 const Inner = styled.div<{ $device?: Device }>`
   width: ${({ $device }) => ($device === 'desktop' ? '960px' : '100%')};
-  margin: ${({ $device }) => ($device === 'desktop' ? 'auto' : '0px')};
+  margin: ${({ $device }) => ($device === 'desktop' ? '0px 30px' : '0px')};
   padding: ${({ $device }) => ($device === 'desktop' ? '0px' : '0px 15px')};
   & > p:nth-of-type(1) {
     color: var(--grey800);
