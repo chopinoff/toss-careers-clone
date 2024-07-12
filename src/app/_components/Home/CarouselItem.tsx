@@ -31,6 +31,8 @@ const ItemWrapper = styled.div<{ $device?: Device }>`
     & > img {
       width: 84px;
       height: 84px;
+      border-radius: 84px;
+      overflow: hidden;
       margin-bottom: 32px;
     }
     & > p:nth-of-type(1) {
