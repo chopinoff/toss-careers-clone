@@ -19,7 +19,8 @@ export default function CultureBox() {
 const Wrapper = styled.div<{ $device?: Device }>`
   padding-top: ${({ $device }) => ($device === 'desktop' ? '432px' : '264px')};
   padding-bottom: 48px;
-  background-image: url(/images/home-cover.jpg);
+  background-image: ${({ $device }) =>
+    $device === 'desktop' ? 'url(/images/home-cover.jpg)' : 'url(/images/home-cover-mobile.jpg)'};
   background-size: cover;
   background-position: center center;
   & > p {

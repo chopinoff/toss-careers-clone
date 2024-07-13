@@ -107,9 +107,10 @@ const Section = styled.section<{ $scrollY: number; $device?: Device }>`
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-image: url('/images/home-background.jpg');
+    background-image: ${({ $device }) =>
+      $device === 'desktop' ? 'url(/images/home-background.jpg)' : 'url(/images/home-background-mobile.jpg)'};
     background-size: cover;
-    background-position: ${({ $device }) => ($device === 'desktop' ? '50% 50%' : '25% 50%')};
+    background-position: center center;
     transform: scale(${(props) => (props.$scrollY < 1600 ? 1 + ((props.$scrollY / 1600) * 3) / 4 : 1.75)});
     transition: all 0.3s;
   }
