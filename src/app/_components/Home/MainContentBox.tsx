@@ -6,7 +6,7 @@ import Margin from '../Margin';
 import ContentBlock from './ContentBlock';
 import { Device } from '@/app/_types/windowSize.types';
 import { Detail } from '@/app/_types/contentSection.types';
-import Carousel from './Carousel';
+import MainCarousel from './MainCarousel';
 
 export default function MainContentBox({ title, content, blocks, carousel, boxIndex }: Detail & { boxIndex: number }) {
   const { device } = useWindowSize();
@@ -25,7 +25,7 @@ export default function MainContentBox({ title, content, blocks, carousel, boxIn
         </BlocksWrapper>
       </Inner>
       <Margin height={56} />
-      <Carousel carousel={carousel} boxIndex={boxIndex} />
+      <MainCarousel carousel={carousel} boxIndex={boxIndex} />
     </ContentWrapper>
   );
 }
@@ -33,9 +33,9 @@ export default function MainContentBox({ title, content, blocks, carousel, boxIn
 const ContentWrapper = styled.div``;
 
 const Inner = styled.div<{ $device?: Device }>`
-  width: ${({ $device }) => ($device === 'desktop' ? '960px' : '100%')};
-  margin: ${({ $device }) => ($device === 'desktop' ? '0px 30px' : '0px')};
-  padding: ${({ $device }) => ($device === 'desktop' ? '0px' : '0px 15px')};
+  width: ${({ $device }) => ($device === 'desktop' ? '1020px' : '100%')};
+  margin: ${({ $device }) => ($device === 'desktop' ? '0px auto' : '0px')};
+  padding: ${({ $device }) => ($device === 'desktop' ? '0px 30px' : '0px 15px')};
   & > p:nth-of-type(1) {
     color: var(--grey800);
     font-weight: bold;

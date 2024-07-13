@@ -1,4 +1,4 @@
-import { Culture, Detail } from '../_types/contentSection.types';
+import { Culture, Detail, SubCarousel, Support } from '../_types/contentSection.types';
 
 export const details: Detail[] = [
   {
@@ -165,4 +165,61 @@ export const culture: Culture = {
   title: '일하는 문화를 새롭게<br/>만들고 있습니다',
   content:
     '토스커뮤니티는 완전히 새로운 조직 문화를 지향합니다.<br/>세상에 없던 제품과 서비스를 선보이려면, 새로운 문화가 바탕이 되어야 한다고 믿습니다.',
+};
+
+export const support: Support = {
+  title: '몰입하는 당신을 위한,<br/>아낌 없는 보상과 지원',
+  blocks: [
+    {
+      blockTitle: '자율적인 근무 환경에서<br/>효율적인 업무가 가능합니다',
+      blockContent:
+        '유연한 출퇴근 시간<br/>원격 근무 가능<br/>별도 승인 없는 자율 휴가<br/>근속 3년마다 리프레시 유급 휴가 1개월',
+    },
+    {
+      blockTitle: '업무와 성장에<br/>몰두할 수 있도록 지원합니다',
+      blockContent:
+        '업계 최고 수준의 연봉<br/>반기별 성과급 지급<br/>개인 법인카드 지급 (식대, 야근교통비 등에 자율 사용)<br/>도서, 워크샵, 세미나 등 업무 교육비 100% 지원<br/>최고급 하드웨어 및 업무용 소프트웨어 제공',
+    },
+    {
+      blockTitle: '사소한 것까지<br/>회사가 책임집니다',
+      blockContent:
+        '1억 무이자 주택자금 대출(토스씨엑스 및 토스인슈어런스 제외)<br/>전문 바리스타가 운영하는 사내 카페<br/>전문 미용사가 상주하는 사내 헤어살롱<br/>다양한 간식과 물품이 상시 구비되어 있는 사내 편의점<br/>직장단체보험 (가족 포함) 및 각종 경조사비 지원<br/>매월 체력단련비, 통신비 지원',
+    },
+  ],
+};
+
+export const subCarousel: SubCarousel = {
+  title: '토스커뮤니티 복지 자세히 보기',
+  carousel: [
+    {
+      carouselTitle: '1억 무이자 주택자금 대출(토스씨엑스 및 토스인슈어런스 제외)',
+      carouselContent:
+        ' 토스커뮤니티 모두가 주거 걱정 없이 일할 수 있도록, 최대 1억 원의 주택자금 대출을 무이자로 받을 수 있습니다.',
+    },
+    {
+      carouselTitle: '자율 휴가',
+      carouselContent:
+        '토스에서 휴가의 핵심은 승인이 아닌 공유입니다. 자율과 신뢰를 기반으로 별도의 보고나 승인 없이 자유롭게 휴가를 사용할 수 있습니다.',
+    },
+    {
+      carouselTitle: '사내 편의점',
+      carouselContent:
+        '언제나 열려있는 무인 편의점에서 다양한 간식부터 각종 비상약품, 문구류까지 모두 무료로 이용 가능합니다.',
+    },
+    {
+      carouselTitle: '사내 카페',
+      carouselContent:
+        '토스 사내 카페 ‘커피 사일로(Coffee Silo)’는 모든 팀원들이 가장 즐겨찾는 공간입니다. 하루의 시작을 도와주는 활력소가 되어주는 것은 물론, 지칠 때 쉬어갈 수 있는 티타임을 준비해 주시기도 합니다.',
+    },
+    {
+      carouselTitle: '자율 출퇴근제',
+      carouselContent:
+        '당신의 업무 스타일에 따라 직접 근무 시간 및 장소(출근 또는 원격 등)를 자유롭게 조정할 수 있습니다.',
+    },
+    {
+      carouselTitle: '업무 집중 공간',
+      carouselContent:
+        '아무런 방해 없이 일에만 집중하고 싶을 때, 혼자 만의 공간을 활용할 수 있습니다. 사무실 곳곳에 오픈형이 아닌 벽으로 분리된 자리, 방음이 잘 되는 폰부스 등이 마련되어 있습니다.',
+    },
+  ],
 };

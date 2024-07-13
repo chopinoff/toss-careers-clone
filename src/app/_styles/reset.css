@@ -145,3 +145,6 @@ table {
 a {
   text-decoration: none;
 }
+img {
+  -webkit-user-drag: none;
+}

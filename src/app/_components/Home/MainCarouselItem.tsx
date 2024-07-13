@@ -3,12 +3,18 @@
 import { useWindowSize } from '@/app/_context/WindowSizeContext';
 import { CarouselDetail } from '@/app/_types/contentSection.types';
 import { Device } from '@/app/_types/windowSize.types';
+import { MutableRefObject } from 'react';
 import { styled } from 'styled-components';
 
-export default function CarouselItem({ carouselContent, name, index }: CarouselDetail & { index: string }) {
+export default function CarouselItem({
+  carouselContent,
+  name,
+  index,
+  itemRef,
+}: CarouselDetail & { index: string; itemRef: MutableRefObject<HTMLDivElement | null> }) {
   const { device } = useWindowSize();
   return (
-    <ItemWrapper $device={device}>
+    <ItemWrapper $device={device} ref={itemRef}>
       <div>
         <img src={`/images/${index}.png`} alt={index} />
         <p dangerouslySetInnerHTML={{ __html: carouselContent }} />

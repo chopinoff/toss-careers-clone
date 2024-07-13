@@ -15,3 +15,23 @@ export interface Detail {
   blocks: BlockDetail[];
   carousel: CarouselDetail[];
 }
+
+export interface Culture {
+  title: string;
+  content: string;
+}
+
+export interface Support {
+  title: string;
+  blocks: { blockTitle: string; blockContent: string }[];
+}
+
+export interface SubCarouselDetail {
+  carouselTitle: string;
+  carouselContent: string;
+}
+
+export interface SubCarousel {
+  title: string;
+  carousel: SubCarouselDetail[];
+}
