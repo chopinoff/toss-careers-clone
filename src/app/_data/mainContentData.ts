@@ -1,4 +1,4 @@
-import { Detail } from '../_types/contentSection.types';
+import { Culture, Detail } from '../_types/contentSection.types';
 
 export const details: Detail[] = [
   {
@@ -160,3 +160,9 @@ export const details: Detail[] = [
     ],
   },
 ];
+
+export const culture: Culture = {
+  title: '일하는 문화를 새롭게<br/>만들고 있습니다',
+  content:
+    '토스커뮤니티는 완전히 새로운 조직 문화를 지향합니다.<br/>세상에 없던 제품과 서비스를 선보이려면, 새로운 문화가 바탕이 되어야 한다고 믿습니다.',
+};
