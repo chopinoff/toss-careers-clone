@@ -2,14 +2,12 @@ import { MutableRefObject, useEffect, useRef, useState } from 'react';
 
 export function useCarousel({
   items,
-  wrapperRef,
   containerRef,
   itemRef,
   margin,
   lastIndex,
 }: {
   items: any[];
-  wrapperRef: MutableRefObject<HTMLDivElement | null>;
   containerRef: MutableRefObject<HTMLDivElement | null>;
   itemRef: MutableRefObject<HTMLDivElement | null>;
   margin: number;
@@ -27,9 +25,21 @@ export function useCarousel({
     setCurrentTranslate(prevTranslate);
   }
 
+  function handleTouchStart(e: React.TouchEvent) {
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+    setPrevTranslate(currentTranslate);
+  }
+
   function handleMouseMove(e: React.MouseEvent) {
     if (!isDragging) return;
     const currentPosition = e.clientX - startX;
+    setCurrentTranslate(prevTranslate + currentPosition);
+  }
+
+  function handleTouchMove(e: React.TouchEvent) {
+    if (!isDragging) return;
+    const currentPosition = e.touches[0].clientX - startX;
     setCurrentTranslate(prevTranslate + currentPosition);
   }
 
@@ -46,8 +56,25 @@ export function useCarousel({
     }
   }
 
+  function handleTouchEnd() {
+    setIsDragging(false);
+    const movedBy = currentTranslate - prevTranslate;
+    const itemWidth = itemRef.current?.offsetWidth;
+    if (itemWidth && Math.abs(movedBy) > itemWidth / 5) {
+      if (movedBy < 0 && currentIndex < lastIndex) {
+        setCurrentIndex((prev) => Math.min(prev + 1, lastIndex));
+      } else if (movedBy >= 0 && currentIndex > 0) {
+        setCurrentIndex((prev) => Math.max(prev - 1, 0));
+      }
+    }
+  }
+
   function handleMouseLeave() {
     if (isDragging) handleMouseUp();
+  }
+
+  function handleTouchCancel() {
+    if (isDragging) handleTouchEnd();
   }
 
   function handleArrowBtn(direction: 'left' | 'right') {
@@ -65,9 +92,8 @@ export function useCarousel({
   }, [currentTranslate]);
 
   useEffect(() => {
-    if (itemRef.current && wrapperRef.current) {
+    if (itemRef.current) {
       const itemWidth = itemRef.current?.offsetWidth + margin;
-      const wrapperWidth = wrapperRef.current?.offsetWidth;
       if (items.length - 1 === lastIndex && currentIndex === lastIndex) {
         setCurrentTranslate(-currentIndex * itemWidth + 20);
         setPrevTranslate(-currentIndex * itemWidth + 20);
@@ -78,5 +104,16 @@ export function useCarousel({
     }
   }, [isDragging, currentIndex, lastIndex]);
 
-  return { currentIndex, handleMouseDown, handleMouseUp, handleMouseMove, handleMouseLeave, handleArrowBtn };
+  return {
+    currentIndex,
+    handleMouseDown,
+    handleTouchStart,
+    handleMouseUp,
+    handleTouchEnd,
+    handleMouseMove,
+    handleTouchMove,
+    handleMouseLeave,
+    handleTouchCancel,
+    handleArrowBtn,
+  };
 }

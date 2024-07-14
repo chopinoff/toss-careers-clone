@@ -31,6 +31,7 @@ const Wrapper = styled.div<{ $device?: Device }>`
   margin: 0 auto;
   max-width: ${({ $device }) => ($device === 'desktop' ? '1020px' : '100%')};
   & > p {
+    max-width: ${({ $device }) => ($device === 'desktop' ? '960px' : '100%')};
     margin-bottom: ${({ $device }) => ($device === 'desktop' ? '56px' : '40px')};
     font-weight: bold;
     font-size: ${({ $device }) => ($device === 'desktop' ? '56px' : '28px')};

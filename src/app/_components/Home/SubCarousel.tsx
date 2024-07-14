@@ -7,24 +7,33 @@ import { Device } from '@/app/_types/windowSize.types';
 import { useWindowSize } from '@/app/_context/WindowSizeContext';
 import { useCarousel } from '@/app/_hooks/useCarousel';
 import { subCarousel } from '@/app/_data/mainContentData';
+import Margin from '../Margin';
 
 export default function SubCarousel() {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRef = useRef<HTMLDivElement | null>(null);
   const { device } = useWindowSize();
   const { title, carousel } = subCarousel;
   const [lastIndex, setLastIndex] = useState<number>(carousel.length);
   const [margin, setMargin] = useState<number>(0);
-  const { currentIndex, handleMouseDown, handleMouseUp, handleMouseMove, handleMouseLeave, handleArrowBtn } =
-    useCarousel({
-      items: carousel,
-      wrapperRef: wrapperRef,
-      containerRef: containerRef,
-      itemRef: itemRef,
-      margin: margin,
-      lastIndex: lastIndex,
-    });
+  const {
+    currentIndex,
+    handleMouseDown,
+    handleTouchStart,
+    handleMouseUp,
+    handleTouchEnd,
+    handleMouseMove,
+    handleTouchMove,
+    handleMouseLeave,
+    handleTouchCancel,
+    handleArrowBtn,
+  } = useCarousel({
+    items: carousel,
+    containerRef: containerRef,
+    itemRef: itemRef,
+    margin: margin,
+    lastIndex: lastIndex,
+  });
 
   useEffect(() => {
     if (device) {
@@ -39,7 +48,10 @@ export default function SubCarousel() {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
-      ref={wrapperRef}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
+      onTouchCancel={handleTouchCancel}
       $device={device}
       $index={currentIndex}
       $lastIndex={lastIndex}
@@ -83,6 +95,7 @@ const CarouselWrapper = styled.div<{ $device?: Device; $index: number; $lastInde
     padding-left: 30px;
     & > p {
       font-weight: bold;
+      margin-top: ${({ $device }) => ($device === 'desktop' ? '0px' : '40px')};
       margin-bottom: ${({ $device }) => ($device === 'desktop' ? '24px' : '16px')};
       font-size: ${({ $device }) => ($device === 'desktop' ? '32px' : '26px')};
       line-height: ${({ $device }) => ($device === 'desktop' ? '42px' : '37px')};

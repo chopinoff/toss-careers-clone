@@ -9,19 +9,27 @@ import { useWindowSize } from '@/app/_context/WindowSizeContext';
 import { useCarousel } from '@/app/_hooks/useCarousel';
 
 export default function MainCarousel({ carousel, boxIndex }: { carousel: CarouselDetail[]; boxIndex: number }) {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRef = useRef<HTMLDivElement | null>(null);
   const { device } = useWindowSize();
-  const { currentIndex, handleMouseDown, handleMouseUp, handleMouseMove, handleMouseLeave, handleArrowBtn } =
-    useCarousel({
-      items: carousel,
-      wrapperRef: wrapperRef,
-      containerRef: containerRef,
-      itemRef: itemRef,
-      margin: 0,
-      lastIndex: carousel.length - 1,
-    });
+  const {
+    currentIndex,
+    handleMouseDown,
+    handleTouchStart,
+    handleMouseUp,
+    handleTouchEnd,
+    handleMouseMove,
+    handleTouchMove,
+    handleMouseLeave,
+    handleTouchCancel,
+    handleArrowBtn,
+  } = useCarousel({
+    items: carousel,
+    containerRef: containerRef,
+    itemRef: itemRef,
+    margin: 0,
+    lastIndex: carousel.length - 1,
+  });
 
   return (
     <CarouselWrapper
@@ -29,7 +37,10 @@ export default function MainCarousel({ carousel, boxIndex }: { carousel: Carouse
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
-      ref={wrapperRef}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
+      onTouchCancel={handleTouchCancel}
       $device={device}
       $index={currentIndex}
       $length={carousel.length}
