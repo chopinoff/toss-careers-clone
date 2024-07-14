@@ -7,6 +7,7 @@ import { details } from '@/app/_data/mainContentData';
 import CultureBox from './CultureBox';
 import SuppertBox from './SupportBox';
 import SubCarousel from './SubCarousel';
+import OutroBox from './OutroBox';
 
 export default function ContentSection() {
   const { scrollY } = useScroll();
@@ -19,6 +20,7 @@ export default function ContentSection() {
       <MainContentBox {...details[2]} boxIndex={2} />
       <SuppertBox />
       <SubCarousel />
+      <OutroBox />
     </Section>
   );
 }
