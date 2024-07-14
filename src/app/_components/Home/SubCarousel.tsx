@@ -78,6 +78,7 @@ export default function SubCarousel() {
           </div>
         </div>
       )}
+      <Margin height={device === 'desktop' ? 108 : 52} />
     </CarouselWrapper>
   );
 }
