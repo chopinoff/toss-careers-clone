@@ -4,6 +4,7 @@ import './_styles/reset.css';
 import './_styles/global.css';
 import { WindowSizeProvider } from './_context/WindowSizeContext';
 import NavgationBar from './_components/NavigationBar/NavigationBar';
+import FooterSection from './_components/Home/FooterSection';
 
 export const metadata: Metadata = {
   title: '토스채용',
@@ -26,6 +27,7 @@ export default function RootLayout({
             <NavgationBar />
             {children}
           </StyledComponentsRegistry>
+          <FooterSection />
         </body>
       </html>
     </WindowSizeProvider>

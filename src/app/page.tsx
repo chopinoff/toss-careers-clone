@@ -17,7 +17,6 @@ export default function Home() {
     <Main>
       <ScrollSection />
       <ContentSection />
-      <FooterSection />
     </Main>
   );
 }
