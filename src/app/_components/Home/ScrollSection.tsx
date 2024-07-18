@@ -12,7 +12,7 @@ export default function ScrollSection() {
   const { device } = useWindowSize();
   const backgroundRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLParagraphElement | null>(null);
-  const setNavbarColor = useNavbarStore((store) => store.setNavbarColor);
+  const setNavbarBgColor = useNavbarStore((store) => store.setNavbarBgColor);
 
   useEffect(() => {
     if (backgroundRef.current) {
@@ -24,9 +24,9 @@ export default function ScrollSection() {
       titleRef.current.style.opacity = String(opacity);
     }
     if (scrollY > 2500) {
-      setNavbarColor('var(--grey900)');
+      setNavbarBgColor('var(--grey900)');
     } else {
-      setNavbarColor('#00000000');
+      setNavbarBgColor('#00000000');
     }
   }, [scrollY]);
 

@@ -14,6 +14,9 @@ export default function NavigationContent() {
   const setIsMenuOpen = useNavbarStore((store) => store.setIsMenuOpen);
   const isSubMenuOpen = useNavbarStore((store) => store.isSubMenuOpen);
   const setIsSubMenuOpen = useNavbarStore((store) => store.setIsSubMenuOpen);
+  const navbarBgColor = useNavbarStore((store) => store.navbarBgColor);
+  const navbarSubBgColor = useNavbarStore((store) => store.navbarSubBgColor);
+  const navbarHoverBgColor = useNavbarStore((store) => store.navbarHoverBgColor);
 
   function handleMenu(e: React.MouseEvent<HTMLElement, MouseEvent>) {
     setIsMenuOpen(!isMenuOpen);
@@ -70,7 +73,7 @@ export default function NavigationContent() {
         </MobileNav>
       )}
       {device && (
-        <Menu $isMenuOpen={isMenuOpen} className="nav-menu">
+        <Menu $isMenuOpen={isMenuOpen} $navbarHoverBgColor={navbarHoverBgColor} className="nav-menu">
           <ul>
             <li onMouseOver={handleSubMenu} onMouseOut={handleSubMenu} onClick={handleSubMenu}>
               <button>
@@ -79,7 +82,12 @@ export default function NavigationContent() {
                   <Toggle $isSubMenuOpen={isSubMenuOpen} src="/images/toggle-icon.svg" alt="toggle icon" />
                 )}
               </button>
-              <SubMenu $isSubMenuOpen={isSubMenuOpen} className="nav-sub-menu">
+              <SubMenu
+                $isSubMenuOpen={isSubMenuOpen}
+                $navbarSubBgColor={navbarSubBgColor}
+                $navbarHoverBgColor={navbarHoverBgColor}
+                className="nav-sub-menu"
+              >
                 <ul>
                   <li>
                     <Link href="/toss">토스</Link>
@@ -151,7 +159,6 @@ const MenuBtn = styled(MobileBtn)<{ $isMenuOpen?: boolean }>`
   }
 `;
 const Menu = styled.div<{ $isMenuOpen?: boolean }>`
-  color: var(--white);
   & > ul > li {
     position: relative;
     & > button,
@@ -161,7 +168,7 @@ const Menu = styled.div<{ $isMenuOpen?: boolean }>`
   }
   transition: all 0.2s;
 `;
-const DesktopMenu = styled(Menu)`
+const DesktopMenu = styled(Menu)<{ $navbarHoverBgColor: string }>`
   display: flex;
   align-items: center;
   & > ul {
@@ -174,12 +181,12 @@ const DesktopMenu = styled(Menu)`
       }
       & > button:hover,
       & > a:hover {
-        background-color: var(--whiteOpacity100);
+        background-color: ${({ $navbarHoverBgColor }) => $navbarHoverBgColor};
       }
     }
   }
 `;
-const MobileMenu = styled(Menu)<{ $isMenuOpen?: boolean }>`
+const MobileMenu = styled(Menu)<{ $isMenuOpen?: boolean; $navbarHoverBgColor: string }>`
   position: absolute;
   top: 60px;
   left: 0px;
@@ -204,7 +211,7 @@ const MobileMenu = styled(Menu)<{ $isMenuOpen?: boolean }>`
         text-align: left;
       }
       & > a:hover {
-        background-color: var(--whiteOpacity100);
+        background-color: ${({ $navbarHoverBgColor }) => $navbarHoverBgColor};
       }
     }
   }
@@ -215,19 +222,19 @@ const Toggle = styled.img<{ $isSubMenuOpen?: boolean }>`
   transform: rotate(${(props) => (props.$isSubMenuOpen ? '180deg' : '0deg')});
   transition: all 0.2s;
 `;
-const SubMenu = styled.div<{ $isSubMenuOpen?: boolean }>`
+const SubMenu = styled.div<{ $isSubMenuOpen?: boolean; $navbarSubBgColor: string; $navbarHoverBgColor: string }>`
   & > ul {
     display: flex;
     flex-direction: column;
     position: absolute;
     width: 100%;
-    background-color: var(--darkThemeBackgroundLevel01);
+    background-color: ${({ $navbarSubBgColor }) => $navbarSubBgColor};
     & > li > a {
       cursor: pointer;
       display: block;
     }
     & > li > a:hover {
-      background-color: var(--whiteOpacity100);
+      background-color: ${({ $navbarHoverBgColor }) => $navbarHoverBgColor};
     }
   }
 `;

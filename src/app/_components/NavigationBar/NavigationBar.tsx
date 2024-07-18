@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import { useNavbarStore } from '@/app/_store/navbarStore';
 
 export default function NavgationBar() {
-  const navbarColor = useNavbarStore((state) => state.navbarColor);
+  const navbarBgColor = useNavbarStore((state) => state.navbarBgColor);
+  const navbarTextColor = useNavbarStore((state) => state.navbarTextColor);
   const isMenuOpen = useNavbarStore((state) => state.isMenuOpen);
   const isSubMenuOpen = useNavbarStore((state) => state.isSubMenuOpen);
 
@@ -24,7 +25,7 @@ export default function NavgationBar() {
   }, [isMenuOpen, isSubMenuOpen]);
 
   return (
-    <NavBar $navbarColor={navbarColor} className="nav">
+    <NavBar $navbarBgColor={navbarBgColor} $navbarTextColor={navbarTextColor} className="nav">
       <div className="nav-bg"></div>
       <div>
         <div>
@@ -36,16 +37,17 @@ export default function NavgationBar() {
   );
 }
 
-const NavBar = styled.nav<{ $navbarColor: string }>`
+const NavBar = styled.nav<{ $navbarBgColor: string; $navbarTextColor: string }>`
   position: fixed;
   z-index: 10;
   width: 100%;
   font-size: 15px;
   height: 60px;
   transition: all 0.2s;
+  color: ${({ $navbarTextColor }) => $navbarTextColor};
   & > div {
     z-index: 10;
-    background-color: ${(props) => props.$navbarColor};
+    background-color: ${(props) => props.$navbarBgColor};
     margin: auto;
     & > div {
       display: flex;

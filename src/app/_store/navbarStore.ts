@@ -1,8 +1,14 @@
 import { create } from 'zustand';
 
 interface NavbarState {
-  navbarColor: string;
-  setNavbarColor: (color: string) => void;
+  navbarBgColor: string;
+  setNavbarBgColor: (color: string) => void;
+  navbarSubBgColor: string;
+  setNavbarSubBgColor: (color: string) => void;
+  navbarHoverBgColor: string;
+  setNavbarHoverBgColor: (color: string) => void;
+  navbarTextColor: string;
+  setNavbarTextColor: (color: string) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
   isSubMenuOpen: boolean;
@@ -10,8 +16,14 @@ interface NavbarState {
 }
 
 export const useNavbarStore = create<NavbarState>()((set) => ({
-  navbarColor: '#00000000',
-  setNavbarColor: (color) => set({ navbarColor: color }),
+  navbarBgColor: '#00000000',
+  setNavbarBgColor: (color) => set({ navbarBgColor: color }),
+  navbarHoverBgColor: 'var(--whiteOpacity100)',
+  setNavbarHoverBgColor: (color) => set({ navbarHoverBgColor: color }),
+  navbarSubBgColor: 'var(--darkThemeBackgroundLevel01)',
+  setNavbarSubBgColor: (color) => set({ navbarSubBgColor: color }),
+  navbarTextColor: 'var(--white)',
+  setNavbarTextColor: (color) => set({ navbarTextColor: color }),
   isMenuOpen: false,
   setIsMenuOpen: (open) => set({ isMenuOpen: open }),
   isSubMenuOpen: false,
