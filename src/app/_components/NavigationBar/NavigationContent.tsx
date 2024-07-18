@@ -17,7 +17,6 @@ export default function NavigationContent() {
   const setIsMenuOpen = useNavbarStore((store) => store.setIsMenuOpen);
   const isSubMenuOpen = useNavbarStore((store) => store.isSubMenuOpen);
   const setIsSubMenuOpen = useNavbarStore((store) => store.setIsSubMenuOpen);
-  const navbarBgColor = useNavbarStore((store) => store.navbarBgColor);
   const navbarSubBgColor = useNavbarStore((store) => store.navbarSubBgColor);
   const navbarHoverBgColor = useNavbarStore((store) => store.navbarHoverBgColor);
   const navbarTextColor = useNavbarStore((store) => store.navbarTextColor);
@@ -94,40 +93,62 @@ export default function NavigationContent() {
               >
                 <ul>
                   <li>
-                    <Link href="/toss">토스</Link>
+                    <Link onClick={handleMenu} href="/toss">
+                      토스
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/tossinsurance">토스인슈어런스</Link>
+                    <Link onClick={handleMenu} href="/tossinsurance">
+                      토스인슈어런스
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/tosspayments">토스페이먼츠</Link>
+                    <Link onClick={handleMenu} href="/tosspayments">
+                      토스페이먼츠
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/tosssecurities">토스증권</Link>
+                    <Link onClick={handleMenu} href="/tosssecurities">
+                      토스증권
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/tosscx">토스씨엑스</Link>
+                    <Link onClick={handleMenu} href="/tosscx">
+                      토스씨엑스
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/tossbank">토스뱅크</Link>
+                    <Link onClick={handleMenu} href="/tossbank">
+                      토스뱅크
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/tossplace">토스플레이스</Link>
+                    <Link onClick={handleMenu} href="/tossplace">
+                      토스플레이스
+                    </Link>
                   </li>
                 </ul>
               </SubMenu>
             </li>
             <li>
-              <Link href="/jobs">채용 공고</Link>
+              <Link onClick={handleMenu} href="/jobs">
+                채용 공고
+              </Link>
             </li>
             <li>
-              <Link href="/joining-guide">합류 여정</Link>
+              <Link onClick={handleMenu} href="/joining-guide">
+                합류 여정
+              </Link>
             </li>
             <li>
-              <Link href="/faq?category=0">자주 묻는 질문</Link>
+              <Link onClick={handleMenu} href="/faq?category=0">
+                자주 묻는 질문
+              </Link>
             </li>
             <li>
-              <Link href="/article">아티클</Link>
+              <Link onClick={handleMenu} href="/article">
+                아티클
+              </Link>
             </li>
           </ul>
         </Menu>
