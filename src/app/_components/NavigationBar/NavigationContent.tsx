@@ -5,6 +5,9 @@ import { useWindowSize } from '@/app/_context/WindowSizeContext';
 import { useEffect } from 'react';
 import { styled } from 'styled-components';
 import { useNavbarStore } from '@/app/_store/navbarStore';
+import HamburgerIcon from './HamburgerIcon';
+import SearchIcon from './SearchIcon';
+import CloseIcon from './CloseIcon';
 
 export default function NavigationContent() {
   const { device } = useWindowSize();
@@ -17,6 +20,7 @@ export default function NavigationContent() {
   const navbarBgColor = useNavbarStore((store) => store.navbarBgColor);
   const navbarSubBgColor = useNavbarStore((store) => store.navbarSubBgColor);
   const navbarHoverBgColor = useNavbarStore((store) => store.navbarHoverBgColor);
+  const navbarTextColor = useNavbarStore((store) => store.navbarTextColor);
 
   function handleMenu(e: React.MouseEvent<HTMLElement, MouseEvent>) {
     setIsMenuOpen(!isMenuOpen);
@@ -59,14 +63,14 @@ export default function NavigationContent() {
         <MobileNav>
           <li>
             <SearchBtn>
-              <img src="/images/search-icon.svg" height={18} />
+              <SearchIcon color={navbarTextColor} />
             </SearchBtn>
           </li>
           <li>
             <MenuBtn onClick={handleMenu} $isMenuOpen={isMenuOpen}>
               <div>
-                <img src="/images/hamburger-icon.svg" height={20} alt="hamburger icon" className="hamburger" />
-                <img src="/images/close-icon.svg" height={20} alt="close icon" className="close" />
+                <HamburgerIcon className="hamburger" color={navbarTextColor} />
+                <CloseIcon className="close" color={navbarTextColor} />
               </div>
             </MenuBtn>
           </li>
@@ -135,6 +139,10 @@ export default function NavigationContent() {
 const MobileNav = styled.ul`
   display: flex;
   gap: 20px;
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
 `;
 const MobileBtn = styled.button`
   padding: 12px 0px;
@@ -145,7 +153,7 @@ const MenuBtn = styled(MobileBtn)<{ $isMenuOpen?: boolean }>`
     position: relative;
     width: 20px;
     height: 20px;
-    & > img {
+    & > svg {
       position: absolute;
       left: 0;
       transition: all 0.2s;

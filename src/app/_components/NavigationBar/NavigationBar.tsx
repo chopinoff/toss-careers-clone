@@ -8,6 +8,7 @@ import { useNavbarStore } from '@/app/_store/navbarStore';
 
 export default function NavgationBar() {
   const navbarBgColor = useNavbarStore((state) => state.navbarBgColor);
+  const navbarSubBgColor = useNavbarStore((state) => state.navbarSubBgColor);
   const navbarTextColor = useNavbarStore((state) => state.navbarTextColor);
   const navbarBorder = useNavbarStore((state) => state.navbarBorder);
   const isMenuOpen = useNavbarStore((state) => state.isMenuOpen);
@@ -28,6 +29,7 @@ export default function NavgationBar() {
   return (
     <NavBar
       $navbarBgColor={navbarBgColor}
+      $navbarSubBgColor={navbarSubBgColor}
       $navbarTextColor={navbarTextColor}
       $navbarBorder={navbarBorder}
       className="nav"
@@ -43,7 +45,12 @@ export default function NavgationBar() {
   );
 }
 
-const NavBar = styled.nav<{ $navbarBgColor: string; $navbarTextColor: string; $navbarBorder: string }>`
+const NavBar = styled.nav<{
+  $navbarBgColor: string;
+  $navbarSubBgColor: string;
+  $navbarTextColor: string;
+  $navbarBorder: string;
+}>`
   position: fixed;
   z-index: 10;
   width: 100%;
@@ -72,6 +79,6 @@ const NavBar = styled.nav<{ $navbarBgColor: string; $navbarTextColor: string; $n
     width: 100%;
     height: 0px;
     opacity: 0;
-    background-color: var(--darkThemeBackgroundLevel01);
+    background-color: ${({ $navbarSubBgColor }) => $navbarSubBgColor};
   }
 `;
