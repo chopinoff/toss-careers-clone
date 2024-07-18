@@ -10,21 +10,9 @@ export default function HamburgerIcon({ color, className }: { color: string; cla
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <path
-        d="M14.8572 2.28572H1.14288"
-        stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path d="M14.8572 8H1.14288" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      <path
-        d="M14.8572 13.7143H1.14288"
-        stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
+      <path d="M14.8572 2.28572H1.14288" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14.8572 8H1.14288" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14.8572 13.7143H1.14288" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

@@ -6,16 +6,16 @@ export default function SearchIcon({ color }: { color: string }) {
       <path
         d="M6.83684 12.6737C10.0604 12.6737 12.6737 10.0604 12.6737 6.83684C12.6737 3.61324 10.0604 1 6.83684 1C3.61324 1 1 3.61324 1 6.83684C1 10.0604 3.61324 12.6737 6.83684 12.6737Z"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M14.9999 15.0001L10.9615 10.9617"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

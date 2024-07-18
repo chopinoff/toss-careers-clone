@@ -10,8 +10,8 @@ export default function CloseIcon({ color, className }: { color: string; classNa
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <path d="M14 2L2 14" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M2 2L14 14" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M14 2L2 14" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 2L14 14" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
