@@ -7,6 +7,8 @@ interface NavbarState {
   setNavbarSubBgColor: (color: string) => void;
   navbarHoverBgColor: string;
   setNavbarHoverBgColor: (color: string) => void;
+  navbarBorder: string;
+  setNavbarBorder: (border: string) => void;
   navbarTextColor: string;
   setNavbarTextColor: (color: string) => void;
   isMenuOpen: boolean;
@@ -22,6 +24,8 @@ export const useNavbarStore = create<NavbarState>()((set) => ({
   setNavbarHoverBgColor: (color) => set({ navbarHoverBgColor: color }),
   navbarSubBgColor: 'var(--darkThemeBackgroundLevel01)',
   setNavbarSubBgColor: (color) => set({ navbarSubBgColor: color }),
+  navbarBorder: 'var(#00000000)',
+  setNavbarBorder: (border) => set({ navbarBorder: border }),
   navbarTextColor: 'var(--white)',
   setNavbarTextColor: (color) => set({ navbarTextColor: color }),
   isMenuOpen: false,

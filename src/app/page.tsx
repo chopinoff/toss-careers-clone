@@ -11,6 +11,7 @@ export default function Home() {
   const setNavbarSubBgColor = useNavbarStore((store) => store.setNavbarSubBgColor);
   const setNavbarHoverBgColor = useNavbarStore((store) => store.setNavbarHoverBgColor);
   const setNavbarTextColor = useNavbarStore((store) => store.setNavbarTextColor);
+  const setNavbarBorder = useNavbarStore((store) => store.setNavbarBorder);
 
   useEffect(() => {
     window.onbeforeunload = function pushRefresh() {
@@ -20,6 +21,7 @@ export default function Home() {
     setNavbarSubBgColor('var(--grey900)');
     setNavbarHoverBgColor('var(--whiteOpacity100)');
     setNavbarTextColor('var(--white)');
+    setNavbarBorder('none');
   }, []);
 
   return (
