@@ -53,7 +53,7 @@ export default function AdsCarousel() {
     >
       <div ref={containerRef}>
         {carousel.map(({ index, bgColor }, keyIndex) => (
-          <CarouselItem key={keyIndex} ref={itemRef} $index={index} $bgColor={bgColor}>
+          <CarouselItem key={keyIndex} ref={itemRef} $device={device} $index={index} $bgColor={bgColor}>
             <img src={`/images/ads-carousel-${index}.png`} alt={`ads-carousel-${index}`} />
           </CarouselItem>
         ))}
@@ -71,17 +71,17 @@ export default function AdsCarousel() {
 const CarouselWrapper = styled.div<{ $device?: Device; $index: number; $length: number }>`
   position: relative;
   width: 100%;
-  height: 130px;
+  height: ${({ $device }) => ($device === 'desktop' ? '130px' : '80px')};
   overflow: hidden;
   cursor: grab;
   &:active {
     cursor: grabbing;
   }
   & > div {
-    display: flex;
+    display: grid;
     height: 100%;
     width: 700%;
-    /* transition: transform 0.3s ease-out; */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
   & > button {
     position: absolute;
@@ -107,14 +107,14 @@ const CarouselWrapper = styled.div<{ $device?: Device; $index: number; $length: 
   }
 `;
 
-const CarouselItem = styled.div<{ $index: number; $bgColor: string }>`
+const CarouselItem = styled.div<{ $device?: Device; $index: number; $bgColor: string }>`
   background-color: ${({ $bgColor }) => $bgColor};
-  width: 100%;
   display: flex;
   justify-content: center;
+  overflow: hidden;
   & > img {
     display: inline-block;
     width: auto;
-    height: 130px;
+    height: ${({ $device }) => ($device === 'desktop' ? '130px' : '80px')};
   }
 `;
