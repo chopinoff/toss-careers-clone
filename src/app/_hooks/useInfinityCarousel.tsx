@@ -19,6 +19,18 @@ export function useInfinityCarousel({
   const [currentTranslate, setCurrentTranslate] = useState(0);
   const [prevTranslate, setPrevTranslate] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        if (prevIndex + 1 >= items.length - 1) {
+          moveToNthSlide(1);
+        }
+        return prevIndex + 1;
+      });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   function handleMouseDown(e: React.MouseEvent) {
     setIsDragging(true);
     setStartX(e.clientX);

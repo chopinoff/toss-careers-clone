@@ -112,6 +112,7 @@ const CarouselItem = styled.div<{ $device?: Device; $index: number; $bgColor: st
   display: flex;
   justify-content: center;
   overflow: hidden;
+  width: 100vw;
   & > img {
     display: inline-block;
     width: auto;
