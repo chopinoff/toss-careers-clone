@@ -2,7 +2,7 @@
 
 import { styled } from 'styled-components';
 import NavigationLogo from './NavigationLogo';
-import NavigationContentTemp from './NavigationContentTemp';
+import NavigationContent from './NavigationContent';
 import { useEffect } from 'react';
 import { useNavbarStore } from '@/app/_store/navbarStore';
 
@@ -38,7 +38,7 @@ export default function NavgationBar() {
       <div>
         <div>
           <NavigationLogo />
-          <NavigationContentTemp />
+          <NavigationContent />
         </div>
       </div>
     </NavBar>

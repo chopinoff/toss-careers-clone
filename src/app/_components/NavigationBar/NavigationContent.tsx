@@ -22,7 +22,9 @@ export default function NavigationContent() {
   const navbarTextColor = useNavbarStore((store) => store.navbarTextColor);
 
   function handleMenu(e: React.MouseEvent<HTMLElement, MouseEvent>) {
-    setIsMenuOpen(!isMenuOpen);
+    if (device === 'mobile') {
+      setIsMenuOpen(!isMenuOpen);
+    }
   }
 
   function handleSubMenu(e: React.MouseEvent<HTMLElement, MouseEvent>) {
