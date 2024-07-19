@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 import { useNavbarStore } from '../_store/navbarStore';
+import AdsCarousel from '../_components/Jobs/AdsCarousel';
+import Margin from '../_components/Margin';
 
 export default function Jobs() {
   const setNavbarBgColor = useNavbarStore((store) => store.setNavbarBgColor);
@@ -16,5 +18,10 @@ export default function Jobs() {
     setNavbarTextColor('#202632');
     setNavbarBorder('1px solid var(--greyOpacity200)');
   }, []);
-  return <main></main>;
+  return (
+    <main>
+      <Margin height={60} />
+      <AdsCarousel />
+    </main>
+  );
 }
